@@ -48,5 +48,9 @@ namespace SigmaCamp_HomeTask1
         {
             Name = name;
         }
+        public override string ToString()
+        {
+            return $"{Name}, {Price} UAH for {Weight} kg";
+        }
     }
 }

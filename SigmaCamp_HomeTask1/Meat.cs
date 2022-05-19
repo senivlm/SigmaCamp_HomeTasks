@@ -53,5 +53,9 @@ namespace SigmaCamp_HomeTask1
                 }
             }
         }
+        public override string ToString()
+        {
+            return $"{Name} {Kind}, {Category}, {Price} UAH for {Weight} kg";
+        }
     }
 }
