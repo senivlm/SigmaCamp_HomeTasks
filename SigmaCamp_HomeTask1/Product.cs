@@ -48,6 +48,10 @@ namespace SigmaCamp_HomeTask1
         {
             Name = name;
         }
+        public virtual void ChangePrice(int percentToIncrease)
+        {
+            Price = Price * (decimal)((double)percentToIncrease/100+1);
+        } 
         public override string ToString()
         {
             return $"{Name}, {Price} UAH for {Weight} kg";

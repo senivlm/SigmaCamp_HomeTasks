@@ -4,6 +4,8 @@ namespace SigmaCamp_HomeTask1
 {
     internal class Meat:Product
     {
+        const double rateCategory1 = 0.1;
+        const double rateCategory2 = 0.15;
         private string _category;
         private string _kind;
         public Meat(decimal price, double weight, string category, string kind):base("М'ясо", price, weight)
@@ -51,6 +53,21 @@ namespace SigmaCamp_HomeTask1
                     default:
                         throw new ArgumentException("Category can be only Extra class 1 or 2");
                 }
+            }
+        }
+        public override void ChangePrice(int percentToIncrease)
+        {
+            base.ChangePrice(percentToIncrease);
+            switch (this.Category)
+            {
+                case "Extra class 1":
+                    Price = Price * (decimal)(rateCategory1+1);
+                    break;
+                case "Extra class 2":
+                    Price = Price * (decimal)(rateCategory2 + 1);
+                    break;
+                default:
+                    break;
             }
         }
         public override string ToString()
