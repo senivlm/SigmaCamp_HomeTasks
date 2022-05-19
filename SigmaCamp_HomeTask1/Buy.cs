@@ -4,7 +4,6 @@ namespace SigmaCamp_HomeTask1
 {
     internal class Buy
     {
-        public static List<Buy> boughtProducts { get; }
         public Product ProductToBuy { get; private set; }
         private int _productQuantity;
         public decimal TotalPrice { get; private set; }
@@ -15,7 +14,6 @@ namespace SigmaCamp_HomeTask1
             _productQuantity = quantity;
             TotalPrice = ProductToBuy.Price * quantity;
             ProductTotalWeight = ProductToBuy.Weight * quantity;
-            boughtProducts.Add(this);
         }
         public int ProductQuantity
         {

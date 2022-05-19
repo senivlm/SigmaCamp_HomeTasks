@@ -8,7 +8,7 @@ namespace SigmaCamp_HomeTask1
         private double _weight;
         public string Name { get; private set; }
         public Product() {}
-        public Product(decimal price, string name, double weight)
+        public Product(string name, decimal price, double weight)
         {
             Name = name;
             Price = price;

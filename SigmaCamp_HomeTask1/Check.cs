@@ -5,7 +5,7 @@ namespace SigmaCamp_HomeTask1
     internal class Check
     {
         public Check() { }
-        public void PrintCheck(List<Buy> boughtProducts)
+        public void PrintCheck(params Buy[] boughtProducts)
         {
             foreach (var purchase in boughtProducts)
             {
