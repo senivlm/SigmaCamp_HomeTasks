@@ -6,7 +6,7 @@ namespace SigmaCamp_HomeTask1
     {
         private decimal _price;
         private double _weight;
-        public string Name { get; private set; }
+        public string Name { get; protected set; }
         public Product() {}
         public Product(string name, decimal price, double weight)
         {
@@ -48,13 +48,17 @@ namespace SigmaCamp_HomeTask1
         {
             Name = name;
         }
-        public virtual void ChangePrice(int percentToIncrease)
+        public virtual string GetDescription()
         {
-            Price = Price * (decimal)((double)percentToIncrease/100+1);
+            return $"Name: {Name}, Price: {Price}, Weight: {Weight}";
+        }
+        public virtual void ChangePrice(int percentToChange)
+        {
+            Price = Price * (decimal)((double)percentToChange/100+1);
         } 
         public override string ToString()
         {
-            return $"{Name}, {Price} UAH for {Weight} kg";
+            return $"{Name}";
         }
     }
 }

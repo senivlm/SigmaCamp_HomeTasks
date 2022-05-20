@@ -20,6 +20,7 @@ namespace SigmaCamp_HomeTask1
         const double rateCategory2 = 0.15;
         private MeatCategory _category;
         private MeatKind _kind;
+        public Meat() { }
         public Meat(decimal price, double weight, string category, string kind):base("Meat", price, weight)
         {
             Category = category;
@@ -61,6 +62,10 @@ namespace SigmaCamp_HomeTask1
                 default:
                     break;
             }
+        }
+        public override string GetDescription()
+        {
+            return $"Kind: {Kind}, Category: {Category}, Price: {Price}, Weight: {Weight}";
         }
         public override string ToString()
         {

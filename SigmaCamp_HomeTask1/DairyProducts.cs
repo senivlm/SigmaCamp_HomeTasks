@@ -6,6 +6,7 @@ namespace SigmaCamp_HomeTask1
     {
         const double rate1 = 0.05;
         private int _shelfLife;
+        public DairyProducts() { }
         public DairyProducts(string name, decimal price, double weight, int shelfLife):base(name, price, weight)
         {
             ShelfLife = shelfLife;
@@ -25,9 +26,9 @@ namespace SigmaCamp_HomeTask1
                 }
             }
         }
-        public override void ChangePrice(int percentToIncrease)
+        public override void ChangePrice(int percentToChange)
         {
-            base.ChangePrice(percentToIncrease);
+            base.ChangePrice(percentToChange);
             if (ShelfLife > 1 && ShelfLife <= 5)
             {
                 Price = Price * (decimal)(rate1*4 + 1);
@@ -44,6 +45,10 @@ namespace SigmaCamp_HomeTask1
             {
                 Price = Price * (decimal)(rate1 + 1);
             }
+        }
+        public override string GetDescription()
+        {
+            return base.GetDescription() + $", Shelf Life: {ShelfLife}";
         }
         public override string ToString()
         {
