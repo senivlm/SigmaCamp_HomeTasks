@@ -1,33 +1,54 @@
 ﻿using System;
-
+using System.Collections.Generic;
 namespace SigmaCamp_HomeTask1
 {
     internal class Buy
     {
-        public Product ProductToBuy { get; private set; }
-        private int _productQuantity;
-        public decimal TotalPrice { get; private set; }
-        public double ProductTotalWeight { get; private set; }
-        public Buy(Product product, int quantity)
+        public Dictionary<Product, int> ProductsAndNumber { get; private set; }
+        public Buy() 
         {
-            ProductToBuy = product;
-            _productQuantity = quantity;
-            TotalPrice = ProductToBuy.Price * quantity;
-            ProductTotalWeight = ProductToBuy.Weight * quantity;
+            ProductsAndNumber = new Dictionary<Product, int>();
         }
-        public int ProductQuantity
+        public Buy(Product product, int quantity):base()
         {
-            get { return _productQuantity; }
-            set
+            AddProduct(product, quantity);
+        }
+        public void AddProduct(Product product, int quantity = 1)
+        {
+            if (product == null || quantity <= 0)
             {
-                if (value<=0)
-                {
-                    throw new ArgumentOutOfRangeException("There is an incorrect value for product`s weight");
-                }
-                else
-                {
-                    _productQuantity=value;
-                }
+                throw new ArgumentException("Something wrong with your product or its quantity");
+            }
+            ProductsAndNumber.Add(product, quantity);
+        }
+        public decimal GetTotalPrice(Product product)
+        {
+            if (product == null )
+            {
+                throw new ArgumentException("Something wrong with your product");
+            }
+            if (ProductsAndNumber.ContainsKey(product))
+            {
+                return product.Price * ProductsAndNumber[product];
+            }
+            else
+            {
+                throw new ArgumentException("You don't add this product in shopping cart");
+            }
+        }
+        public double GetTotalWeight(Product product)
+        {
+            if (product == null)
+            {
+                throw new ArgumentException("Something wrong with your product");
+            }
+            if (ProductsAndNumber.ContainsKey(product))
+            {
+                return product.Weight * ProductsAndNumber[product];
+            }
+            else
+            {
+                throw new ArgumentException("You don't add this product in shopping cart");
             }
         }
     }

@@ -5,11 +5,12 @@ namespace SigmaCamp_HomeTask1
     internal class Check
     {
         public Check() { }
-        public void PrintCheck(params Buy[] boughtProducts)
+        public void PrintCheck(Buy productsToBuy)
         {
-            foreach (var purchase in boughtProducts)
+            foreach (var purchase in productsToBuy.ProductsAndNumber)
             {
-                Console.WriteLine(purchase.ProductQuantity + " " + purchase.ProductToBuy.Name + ", " + purchase.TotalPrice + "UAH;");
+                Console.WriteLine($"{purchase.Key}, Quantity: {purchase.Value}, " +
+                    $"TotalPrice: {productsToBuy.GetTotalPrice(purchase.Key)}, TotalWeight: {productsToBuy.GetTotalWeight(purchase.Key)}");
             }
         }
     }
