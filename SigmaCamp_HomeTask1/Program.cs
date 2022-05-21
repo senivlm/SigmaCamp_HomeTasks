@@ -5,7 +5,7 @@ try
     Product product1 = new Product("Картопля", 7.4m, 1);
     Product product2 = new Product("Шампунь", 72m, 0.2);
     Product product3 = new Product("Батон", 20.75m, 0.5);
-    Product product4 = new Meat(120m, 1, "Extra class 1", "veal");
+    Product product4 = new Meat(120m, 1, "Extraclass1", "veal");
     Product product5 = new DairyProducts("Молоко", 30m, 0.9, 10);
 
     Console.WriteLine(product4);
