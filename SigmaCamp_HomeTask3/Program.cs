@@ -6,15 +6,15 @@ namespace SigmaCamp_HomeTask3
     {
         static void Main(string[] args)
         {
-            Vector myVector = new Vector(9);
-            myVector.InitRandom(1, 5);
+            Vector myVector = new Vector(10);
+            myVector.InitRandom(1, 6);
             try
             {
-                for (int i = 0; i < myVector.GetLength()/2; i++)
-                {
-                    myVector[i] = i;
-                    myVector[myVector.GetLength() - 1 - i] = i;
-                }
+                //for (int i = 0; i < myVector.GetLength()/2; i++)
+                //{
+                //    myVector[i] = i;
+                //    myVector[myVector.GetLength() - 1 - i] = i;
+                //}
                 Console.WriteLine(myVector);
                 //foreach (var item in myVector.CalculateFrequency())
                 //{
@@ -23,10 +23,14 @@ namespace SigmaCamp_HomeTask3
                 //Pair pair1 = new Pair(2,5);
                 //Pair pair2 = new Pair(2,5);
                 //Console.WriteLine(pair1.Equals(pair2));
-                if (myVector.CheckForPalindrome())
-                {
-                    Console.WriteLine("This array is palindrome");
-                }
+                //if (myVector.CheckForPalindrome())
+                //{
+                //    Console.WriteLine("This array is palindrome");
+                //}
+                myVector.Reverse();
+                Console.WriteLine($"Result of my reverse method: {myVector}");
+                myVector.BuiltInReverse();
+                Console.WriteLine($"Result of built-in reverse method: {myVector}");
 
             }
             catch (ArgumentOutOfRangeException ex)
