@@ -117,6 +117,31 @@ namespace SigmaCamp_HomeTask3
         {
             Array.Reverse(arr);
         }
+        public string GetLongestSequence()
+        {
+            string currentSequence = string.Empty;
+            string maxSequence = string.Empty;
+            for (int i = 0; i < arr.Length; i++)
+            {
+                currentSequence = arr[i].ToString();
+                for (int j = i+1; j < arr.Length; j++)
+                {
+                    if (arr[i] == arr[j])
+                    {
+                        currentSequence += " " + arr[j];
+                        if (currentSequence.Length >= maxSequence.Length)
+                        {
+                            maxSequence = currentSequence;
+                        }
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+            }
+            return maxSequence;
+        }
         public override string ToString()
         {
             string stringArr = "";

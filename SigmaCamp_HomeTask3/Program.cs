@@ -7,7 +7,7 @@ namespace SigmaCamp_HomeTask3
         static void Main(string[] args)
         {
             Vector myVector = new Vector(10);
-            myVector.InitRandom(1, 6);
+            myVector.InitRandom(1, 4);
             try
             {
                 //for (int i = 0; i < myVector.GetLength()/2; i++)
@@ -27,10 +27,11 @@ namespace SigmaCamp_HomeTask3
                 //{
                 //    Console.WriteLine("This array is palindrome");
                 //}
-                myVector.Reverse();
-                Console.WriteLine($"Result of my reverse method: {myVector}");
-                myVector.BuiltInReverse();
-                Console.WriteLine($"Result of built-in reverse method: {myVector}");
+                //myVector.Reverse();
+                //Console.WriteLine($"Result of my reverse method: {myVector}");
+                //myVector.BuiltInReverse();
+                //Console.WriteLine($"Result of built-in reverse method: {myVector}");
+                Console.WriteLine(myVector.GetLongestSequence());
 
             }
             catch (ArgumentOutOfRangeException ex)
