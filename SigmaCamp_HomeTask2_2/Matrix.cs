@@ -2,6 +2,11 @@
 
 namespace SigmaCamp_HomeTask2_2
 {
+    public enum Direction
+    {
+        Down,
+        Right
+    }
     internal class Matrix
     {
         private int[,] matrix;
@@ -100,43 +105,35 @@ namespace SigmaCamp_HomeTask2_2
                 }
             }
         }
-        public void FillDiagSnake()
+        public void FillDiagSnake(string direction)
         {
+            Direction _direction;
+            if (!Enum.TryParse(direction, true, out _direction))
+            {
+                throw new ArgumentNullException("You can't choose such direction");
+            }
             if (_rows!=_cols)
             {
                 throw new Exception("Matrix should have a square form");
             }
             int filler = 1;
-            int start;
-            int end;
-
             //заповнення до побічної діагоналі включно
             for (int i = 0; i < _rows; i++)
             {
-                if (i % 2 == 0)
-                {
-                    end = 0;
-                    start = i;
-                }
-                else
-                {
-                    start = 0;
-                    end = i;
-                }
+                var startAndEndTuple = GetEndAndStart(i, true,_direction);
                 for (int j = 0; j < i + 1; j++)
                 {
-                    matrix[start, end] = filler;
-                    if (i % 2 == 1)
+                    matrix[startAndEndTuple.start, startAndEndTuple.end] = filler++;
+                    if ((i % 2 == 1 && _direction.ToString() == "Right") || (i % 2 == 0 && _direction.ToString() == "Down"))
                     {
-                        start++;
-                        end--;
+                        startAndEndTuple.start++;
+                        startAndEndTuple.end--;
                     }
-                    else
+                    else if((i % 2 == 0 && _direction.ToString() == "Right") || (i % 2 == 1 && _direction.ToString() == "Down"))
                     {
-                        start--;
-                        end++;
+                        startAndEndTuple.start--;
+                        startAndEndTuple.end++;
                     }
-                    filler++;
                 }
             }
 
@@ -144,30 +141,43 @@ namespace SigmaCamp_HomeTask2_2
             int count = 0;
             for (int i = 0; i < _cols - 1; i++)
             {
-                if (i % 2 == 0)
+                var startAndEndTuple = GetEndAndStart(i, false, _direction);
+                for (int j = 0; j < i + 1; j++)
                 {
-                    start = _rows - 1;
-                    end = _rows - 1 - i;
+                    matrix[startAndEndTuple.end, startAndEndTuple.start] = matrix.Length - count;
+                    if ((i % 2 == 1 && _direction.ToString() == "Right") || (i % 2 == 0 && _direction.ToString() == "Down"))
+                    {
+                        startAndEndTuple.start++;
+                        startAndEndTuple.end--;
+                    }
+                    else if ((i % 2 == 0 && _direction.ToString() == "Right") || (i % 2 == 1 && _direction.ToString() == "Down"))
+                    {
+                        startAndEndTuple.start--;
+                        startAndEndTuple.end++;
+                    }
+                    count++;
+                }
+            }
+            (int start, int end) GetEndAndStart(int row, bool beforeDiag, Direction direction)
+            {
+                int temp = row;
+                if (_direction.ToString() == "Down")
+                {
+                    row++;
+                }
+                if (beforeDiag)
+                {
+                    if (row % 2 == 0)
+                        return (temp, 0);
+                    else
+                        return (0, temp);
                 }
                 else
                 {
-                    start = _rows - 1 - i;
-                    end = _rows - 1;
-                }
-                for (int j = 0; j < i + 1; j++)
-                {
-                    matrix[end, start] = matrix.Length - count;
-                    if (i % 2 == 1)
-                    {
-                        start++;
-                        end--;
-                    }
+                    if (row % 2 == 0)
+                        return (_rows - 1, _rows - 1 - temp);
                     else
-                    {
-                        start--;
-                        end++;
-                    }
-                    count++;
+                        return (_rows - 1 - temp, _rows - 1);
                 }
             }
         }
