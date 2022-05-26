@@ -1,9 +1,10 @@
 ﻿using System;
-
+using System.Collections;
 namespace SigmaCamp_HomeTask3
 {
-    internal class Vector
+    internal class Vector:IEnumerable
     {
+        static int counter = 0;
         int[] arr;
         public Vector() : this(10) { }
         public Vector(int size)
@@ -142,6 +143,15 @@ namespace SigmaCamp_HomeTask3
             }
             return maxSequence;
         }
+        public int[] GetCopy()
+        {
+            int[] copy = new int[arr.Length];
+            for (int i = 0; i < arr.Length; i++)
+            {
+                copy[i] = arr[i];
+            }
+            return copy;
+        }
         public override string ToString()
         {
             string stringArr = "";
@@ -150,6 +160,11 @@ namespace SigmaCamp_HomeTask3
                 stringArr += item + " ";
             }
             return stringArr;
+        }
+
+        public IEnumerator GetEnumerator()
+        {
+            return arr.GetEnumerator();
         }
     }
 }
