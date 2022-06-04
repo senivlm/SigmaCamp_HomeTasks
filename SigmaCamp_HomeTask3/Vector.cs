@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections;
 namespace SigmaCamp_HomeTask3
 {
@@ -56,6 +57,17 @@ namespace SigmaCamp_HomeTask3
                 } while (!isInit);
             }
 
+        }
+        public static void GenerateDataToFile(string path, int size = 100)
+        {
+            Random randInt = new Random();
+            using(StreamWriter sw = new StreamWriter(path))
+            {
+                for (int i = 0; i < size; i++)
+                {
+                    sw.WriteLine(randInt.Next(1, size * 10));
+                }
+            }
         }
         public Pair[] CalculateFrequency()
         {
@@ -143,6 +155,7 @@ namespace SigmaCamp_HomeTask3
             }
             return maxSequence;
         }
+
         public int[] GetCopy()
         {
             int[] copy = new int[arr.Length];
