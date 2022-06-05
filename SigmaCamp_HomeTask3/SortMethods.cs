@@ -8,7 +8,7 @@ namespace SigmaCamp_HomeTask3
         static string outputFilePath1 = @"C:\Users\Bogdan\OneDrive - Technical Lyceum NTUU KPI\Навчання\Sigma Camp\SigmaCamp_HomeTask1\SigmaCamp_HomeTask3\DataHomeTask5_outputPart1.txt";
         static string outputFilePath2 = @"C:\Users\Bogdan\OneDrive - Technical Lyceum NTUU KPI\Навчання\Sigma Camp\SigmaCamp_HomeTask1\SigmaCamp_HomeTask3\DataHomeTask5_outputPart2.txt";
         static string outputFilePath3 = @"C:\Users\Bogdan\OneDrive - Technical Lyceum NTUU KPI\Навчання\Sigma Camp\SigmaCamp_HomeTask1\SigmaCamp_HomeTask3\DataHomeTask5_outputFull.txt";
-        private static void Merge(Vector arr, int l, int q, int r)
+        private static void Merge(Vector myVector, int l, int q, int r)
         {
             int i = l;
             int j = q;
@@ -16,13 +16,13 @@ namespace SigmaCamp_HomeTask3
             int k = 0;
             while (!(i == q || j == r))
             {
-                if (arr[i] < arr[j])
+                if (myVector[i] < myVector[j])
                 {
-                    temp[k] = arr[i++];
+                    temp[k] = myVector[i++];
                 }
                 else
                 {
-                    temp[k] = arr[j++];
+                    temp[k] = myVector[j++];
                 }
                 k++;
             }
@@ -30,28 +30,28 @@ namespace SigmaCamp_HomeTask3
             {
                 for (int m = j; m < r; m++)
                 {
-                    temp[k++] = arr[m];
+                    temp[k++] = myVector[m];
                 }
             }
             else
             {
                 while (i < q)
                 {
-                    temp[k++] = arr[i++];
+                    temp[k++] = myVector[i++];
                 }
             }
             for (int n = 0; n < temp.Length; n++)
             {
-                arr[n + l] = temp[n];
+                myVector[n + l] = temp[n];
             }
         }
-        static void MergeSort(Vector arr, int l, int r)
+        static void MergeSort(Vector myVector, int l, int r)
         {
             if (r - l <= 1) return;
             int mid = (r + l) / 2;
-            MergeSort(arr, l, mid);
-            MergeSort(arr, mid, r);
-            Merge(arr, l, mid, r);
+            MergeSort(myVector, l, mid);
+            MergeSort(myVector, mid, r);
+            Merge(myVector, l, mid, r);
         }
         static void FormTwoMergeSortedHalves(string inputFilePath, int size)
         {
@@ -154,6 +154,41 @@ namespace SigmaCamp_HomeTask3
             else
             {
                 throw new FileNotFoundException();
+            }
+        }
+        public static Vector HeapSort(Vector myVector)
+        {
+            int size = myVector.GetLength();
+            for (int i = size/2-1; i >=0; i--)
+            {
+                Heapify(myVector, size, i);
+            }
+
+            //Imitation of pruning the heap putting the root of heap at the end of array
+            for (int i = size - 1; i > 0; i--)
+            {
+                (myVector[0], myVector[i]) = (myVector[i], myVector[0]);
+                Heapify(myVector, i, 0);
+            }
+            return myVector;
+        }
+        static void Heapify(Vector myVector, int sizeOfUnsorted, int currectNode)
+        {
+            int indexOfLargest = currectNode;
+            int indexOfLeftChild = 2*currectNode+1;
+            int indexOfRightChild = 2 * currectNode + 2;
+            if (indexOfLeftChild<sizeOfUnsorted && myVector[indexOfLeftChild] > myVector[indexOfLargest])
+            {
+                indexOfLargest = indexOfLeftChild;
+            }
+            if (indexOfRightChild < sizeOfUnsorted && myVector[indexOfRightChild] > myVector[indexOfLargest])
+            {
+                indexOfLargest = indexOfRightChild;
+            }
+            if (currectNode != indexOfLargest)
+            {
+                (myVector[currectNode], myVector[indexOfLargest]) = (myVector[indexOfLargest], myVector[currectNode]);
+                Heapify(myVector, sizeOfUnsorted, indexOfLargest);
             }
         }
         public static Vector QuickSort(Vector arr, int start, int end, string pivotPlace = "end")

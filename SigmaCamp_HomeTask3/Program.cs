@@ -10,9 +10,12 @@ namespace SigmaCamp_HomeTask3
             myVector.InitRandom(1, 20);
             try
             {
-                string inputPath = @"C:\Users\Bogdan\OneDrive - Technical Lyceum NTUU KPI\Навчання\Sigma Camp\SigmaCamp_HomeTask1\SigmaCamp_HomeTask3\DataHomeTask5_input.txt";
-                Vector.GenerateDataToFile(inputPath);
-                SortMethods.MergeSortFromFile(inputPath);
+                //string inputPath = @"C:\Users\Bogdan\OneDrive - Technical Lyceum NTUU KPI\Навчання\Sigma Camp\SigmaCamp_HomeTask1\SigmaCamp_HomeTask3\DataHomeTask5_input.txt";
+                //Vector.GenerateDataToFile(inputPath);
+                //SortMethods.MergeSortFromFile(inputPath);
+                Console.WriteLine(myVector);
+                SortMethods.HeapSort(myVector);
+                Console.WriteLine(myVector);
                 //for (int i = 0; i < myVector.GetLength()/2; i++)
                 //{
                 //    myVector[i] = i;
