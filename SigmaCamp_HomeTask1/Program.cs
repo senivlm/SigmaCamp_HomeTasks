@@ -1,5 +1,5 @@
 ﻿using SigmaCamp_HomeTask1;
-
+///gftdhjfdjhgfjhfh
 try
 {
     Product product1 = new Product("Картопля", 7.4m, 1);
