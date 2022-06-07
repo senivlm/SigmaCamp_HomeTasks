@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 
 namespace SigmaCamp_HomeTask6
 {
@@ -7,13 +8,13 @@ namespace SigmaCamp_HomeTask6
         DateTime _date = new DateTime();
         int _startCounterValue;
         int _endCounterValue;
-        int _quartal;
-        public ConsumptionRecord(string date, int startCounterValue, int endCounterValue, int quartal)
+        int _quarter;
+        public ConsumptionRecord(string date, int startCounterValue, int endCounterValue, int quarter)
         {
 
             StartCounterValue = startCounterValue;
             EndCounterValue = endCounterValue;
-            Quartel = quartal;
+            Quarter = quarter;
             InitDate(date);
         }
         private void InitDate(string date)
@@ -61,20 +62,38 @@ namespace SigmaCamp_HomeTask6
                 }
             }
         }
-        public int Quartel
+        public int Quarter
         {
-            get { return _quartal; }
+            get { return _quarter; }
             init
             {
                 if (value > 0 && value < 4)
                 {
-                    _quartal = value;
+                    _quarter = value;
                 }
                 else
                 {
                     throw new ArgumentException("Incorrect value for quartel");
                 }
             }
+        }
+        public string GetMonthName()
+        {
+            string monthName = string.Empty;
+            if (_date.Day >= 1 && _date.Day <= 3)
+            {
+                monthName = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(_date.Month - 1);
+            }
+            else
+            {
+                monthName = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(_date.Month);
+            }
+            monthName = char.ToUpper(monthName[0]) + monthName.Substring(1);
+            return monthName;
+        }
+        public override string ToString()
+        {
+            return $"Used electricity on {GetMonthName()}: {EndCounterValue - StartCounterValue}";
         }
     }
 }
