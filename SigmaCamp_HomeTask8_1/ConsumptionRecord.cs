@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Globalization;
 
-namespace SigmaCamp_HomeTask6
+namespace SigmaCamp_HomeTask8_1
 {
     internal class ConsumptionRecord
     {

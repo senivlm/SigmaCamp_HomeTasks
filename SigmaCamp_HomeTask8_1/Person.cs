@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-namespace SigmaCamp_HomeTask6
+namespace SigmaCamp_HomeTask8_1
 {
     internal class Person
     {
@@ -30,6 +30,27 @@ namespace SigmaCamp_HomeTask6
         public string Surname
         {
             get { return _surname; }
+            init
+            {
+                if (value!= null)
+                {
+                    _surname = value;
+                }
+                throw new ArgumentNullException("Surname can't be null");
+            }
+        }
+        public override bool Equals(object obj)
+        {
+            if (obj != null && !(obj is Person))
+            {
+                return false;
+            }
+            Person anotherPerson = (Person)obj;
+            return this.Room.Equals(anotherPerson.Room) && this.Surname.Equals(anotherPerson.Surname);
+        }
+        public override int GetHashCode()
+        {
+            return Room.GetHashCode() ^ Surname.GetHashCode();
         }
     }
 }

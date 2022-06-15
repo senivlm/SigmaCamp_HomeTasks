@@ -1,23 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-namespace SigmaCamp_HomeTask6
+using System.Linq;
+namespace SigmaCamp_HomeTask8_1
 {
     internal class GeneralRecord
     {
         private const decimal priceFor1kWh = 1.44m;
         private Dictionary<Person, List<ConsumptionRecord>> PersonRecords;
-        private static int _numberOfRooms;
-        private static int _quarter;
+        private int _numberOfRooms;
+        private int _quarter;
         public GeneralRecord()
         {
             _numberOfRooms = 0;
             _quarter = 0;
             PersonRecords = new Dictionary<Person, List<ConsumptionRecord>>();
         }
-        public GeneralRecord(string path)
+        public GeneralRecord(string path):this()
         {
-            PersonRecords = new Dictionary<Person, List<ConsumptionRecord>>();
             ReadFromFile(path);
         }
         public void ReadFromFile(string path)
@@ -48,6 +48,10 @@ namespace SigmaCamp_HomeTask6
             {
                 throw new FileNotFoundException($"File is not found at this {path} path");
             }
+        }
+        public Dictionary<Person, List<ConsumptionRecord>> GetRecords()
+        {
+            return PersonRecords;
         }
         public int Quater
         {
@@ -262,6 +266,23 @@ namespace SigmaCamp_HomeTask6
                 }
             }
             return lastRecords;
+        }
+        public void CutSameRecords(GeneralRecord record2)
+        {
+            var uniqueRecords = PersonRecords.Except(record2.GetRecords(), new PersonKeyComparer());
+            PersonRecords = new Dictionary<Person, List<ConsumptionRecord>>(uniqueRecords);
+        }
+        public static List<GeneralRecord> operator+(GeneralRecord records1, GeneralRecord record2)
+        {
+            List<GeneralRecord> recordsList = new List<GeneralRecord>();
+            recordsList.Add(records1);
+            recordsList.Add(record2);
+            return recordsList;
+        }
+        public static GeneralRecord operator -(GeneralRecord records1, GeneralRecord record2)
+        {
+            records1.CutSameRecords(record2);
+            return records1;
         }
     }
 }
