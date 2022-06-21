@@ -6,6 +6,7 @@ namespace SigmaCamp_HomeTask1
     internal class Storage:IEnumerable<Product>
     {
         int place = 0;
+        //Краще замінити на List
         private Product[] _allProducts;
 
         #region Constructors
@@ -106,6 +107,7 @@ namespace SigmaCamp_HomeTask1
                 throw new FileNotFoundException("All attempts failed");
             }
         }
+        // зовні користувач не має керувати місцем розташування. для цього можна зробити індексатор з перевіркою індекса  на вихід за межі
         private void ParseProduct(string line, int place)
         {
             Product product;
@@ -114,6 +116,7 @@ namespace SigmaCamp_HomeTask1
                 _allProducts[place] = product;
             }     
         }
+        // винести за межі класу. Це дасть можливість зробити його модельним
         public void InputManully()
         {
             decimal price;
@@ -181,6 +184,7 @@ namespace SigmaCamp_HomeTask1
                 product.ChangePrice(percentToChange);
             }
         }
+        //Цей метод треба універсалізувати
         public List<Meat> GetMeatProducts()
         {
             List<Meat> meatProducts = new List<Meat>();
