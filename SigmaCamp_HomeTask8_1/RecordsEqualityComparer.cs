@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace SigmaCamp_HomeTask8_1
-{
+{// можна використовувати анонімні об'кти цього класу
     internal class PersonKeyComparer:IEqualityComparer<KeyValuePair<Person, List<ConsumptionRecord>>>
     {
         public bool Equals(KeyValuePair<Person, List<ConsumptionRecord>> personRecords1, KeyValuePair<Person, List<ConsumptionRecord>> personRecords2)
