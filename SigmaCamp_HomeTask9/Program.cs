@@ -7,13 +7,9 @@ namespace lesson14_06
     {
         static void Main(string[] args)
         {
-            Dictionary<string,double> productPrice= new Dictionary<string,double>();
-            productPrice.Add("tomato", 10);
-            productPrice.Add("Onion", 30);
-            productPrice.Add("Meat", 50);
-
-            List<string> products= new List<string>();
-
+            Menu myMenu = RestaurantService.GetMenuFromFile("Menu.txt");
+            PriceList myPriceList = RestaurantService.GetPriceListFromFile("Prices.txt");
+            RestaurantService.GetCurRatesFromFile("Course.txt");
         }
     }
 }
