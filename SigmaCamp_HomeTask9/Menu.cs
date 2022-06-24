@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace lesson14_06
+namespace SigmaCamp_HomeTask9
 {
-    internal class Menu
+    internal class Menu:IEnumerable<Dish>
     {
         private List<Dish> _dishes;
         public Menu()
@@ -42,6 +43,16 @@ namespace lesson14_06
                 sumPrice += priceKurant?.GetProductPrice(key) * (decimal)dish[key];
             }
             return sumPrice;
+        }
+
+        public IEnumerator<Dish> GetEnumerator()
+        {
+            return _dishes.GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
         }
     }
 }

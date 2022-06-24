@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
 using System.Threading.Tasks;
 
-namespace lesson14_06
+namespace SigmaCamp_HomeTask9
 {
     internal class PriceList
     {
@@ -18,17 +19,29 @@ namespace lesson14_06
         {
             _productPrices = productPrice;
         }
-        public void AddPricedProduct(string name, decimal price)
+        public static Dictionary<string, decimal> GetCurrencyRates()
+        {
+            Dictionary<string, decimal> copiedCurrencyRates = new(_currencyRates);
+            return copiedCurrencyRates;
+        }
+        public void AddPricedProduct(string name, decimal price, bool isFromConsole = false)
         {
             if (name == null) throw new ArgumentNullException("Name of product can't be null");
             if (price <= 0) throw new ArgumentException("Price of ingridient can't be less or equal zero");
             _productPrices.Add(name, price);
+            if (isFromConsole)
+            {
+                using (StreamWriter sw = new StreamWriter(FilePaths.priceListPath, true))
+                {
+                    sw.WriteLine($"\n{name} - {price}");
+                }
+            }
         }
-        public decimal? GetProductPrice(string productName)
+        public decimal GetProductPrice(string productName)
         {
             if (!_productPrices.TryGetValue(productName, out decimal result))
-            { 
-                return null;
+            {
+                throw new ArgumentNullException($"Product {productName} haven't been found in price list. You have two attempts to add product price: ");
             }
             return result;
         }

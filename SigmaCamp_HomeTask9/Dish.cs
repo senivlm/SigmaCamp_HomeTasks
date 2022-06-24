@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace lesson14_06
+namespace SigmaCamp_HomeTask9
 {
     internal class Dish
     {
@@ -40,6 +40,11 @@ namespace lesson14_06
             {
                 return _ingridients[key];
             }
+        }
+        public Dictionary<string, double> GetIngridients()
+        {
+            Dictionary<string, double> copiedIngridients = new(_ingridients);
+            return copiedIngridients;
         }
         public void AddIngridient(string name, double weight)
         {
