@@ -1,12 +1,14 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
-namespace SigmaCamp_HomeTask2_2
+namespace SigmaCamp_HomeTask10_2
 {
-    internal class Matrix
+    internal class Matrix:IEnumerable<int>
     {
         private int[,] matrix;
         private int _rows;
         private int _cols;
+        private string direction = "HorSnake";
         public int Length { get => matrix.Length; }
         public Matrix(int rows, int columns)
         {
@@ -142,7 +144,7 @@ namespace SigmaCamp_HomeTask2_2
 
             //заповнення після побічної діагоналі
             int count = 0;
-            for (int i = 0; i < _cols - 1; i++)
+            for (int i = 0; i < _rows; i++)
             {
                 if (i % 2 == 0)
                 {
@@ -197,6 +199,37 @@ namespace SigmaCamp_HomeTask2_2
                 c2--;
                 c3--;
             }
+        }
+        public void SetDirection(int num)
+        {
+            switch (num)
+            {
+                case 1:
+                    direction = "HorSnake";
+                    break;
+                case 2:
+                    direction = "diagSnake";
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        public IEnumerator<int> GetEnumerator()
+        {
+            if (direction == "diagSnake")
+            {
+                return new DiagSnakeEnumerator(this.matrix).GetEnumerator();
+            }
+            else
+            {
+                return new HorSnakeEnumerator(this.matrix).GetEnumerator();
+            }
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
         }
     }
 }

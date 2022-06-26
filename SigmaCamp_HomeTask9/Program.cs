@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace SigmaCamp_HomeTask9
 {
@@ -8,10 +9,29 @@ namespace SigmaCamp_HomeTask9
         static void Main(string[] args)
         {
             Console.OutputEncoding = System.Text.Encoding.GetEncoding(65001);
-            Menu myMenu = RestaurantService.GetMenuFromFile("Menu.txt");
-            PriceList myPriceList = RestaurantService.GetPriceListFromFile("Prices.txt");
-            RestaurantService.GetCurRatesFromFile("Course.txt");
-            RestaurantService.GetFullProductsPrice(myMenu, myPriceList);
+            try
+            {
+                Menu myMenu = RestaurantService.GetMenuFromFile("Menu.txt");
+                PriceList myPriceList = RestaurantService.GetPriceListFromFile("Prices.txt");
+                RestaurantService.GetCurRatesFromFile("Course.txt");
+                RestaurantService.GetFullProductsPrice(myMenu, myPriceList);
+            }
+            catch (ArgumentNullException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            catch (FormatException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            catch (FileNotFoundException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            catch (ArgumentException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
         public static bool TryAddPrice(string productName, out decimal price)
         {

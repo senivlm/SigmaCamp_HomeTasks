@@ -33,6 +33,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SigmaCamp_HomeTask10", "Sig
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SigmaCamp_HomeTask10_1", "SigmaCamp_HomeTask10_1\SigmaCamp_HomeTask10_1.csproj", "{36830802-ABD8-4E8A-A9F0-0DA1A7DB3C3D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SigmaCamp_HomeTask10_2", "SigmaCamp_HomeTask10_2\SigmaCamp_HomeTask10_2.csproj", "{07313A67-7559-4ED1-85F6-3D0376DAE97E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -91,6 +93,10 @@ Global
 		{36830802-ABD8-4E8A-A9F0-0DA1A7DB3C3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{36830802-ABD8-4E8A-A9F0-0DA1A7DB3C3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{36830802-ABD8-4E8A-A9F0-0DA1A7DB3C3D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07313A67-7559-4ED1-85F6-3D0376DAE97E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07313A67-7559-4ED1-85F6-3D0376DAE97E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07313A67-7559-4ED1-85F6-3D0376DAE97E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07313A67-7559-4ED1-85F6-3D0376DAE97E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -100,6 +106,7 @@ Global
 		{14606037-1FAE-45D6-B3D2-FDC016B119DE} = {9EB85D06-595D-4795-B9A5-E9215298A20C}
 		{8862C6F6-9477-40A4-8598-1597A0FC1B61} = {9EB85D06-595D-4795-B9A5-E9215298A20C}
 		{36830802-ABD8-4E8A-A9F0-0DA1A7DB3C3D} = {5088CD05-B164-4820-9192-8D51C6A14848}
+		{07313A67-7559-4ED1-85F6-3D0376DAE97E} = {5088CD05-B164-4820-9192-8D51C6A14848}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1C0F5E01-C9A6-4189-A563-EEA81B19DD80}

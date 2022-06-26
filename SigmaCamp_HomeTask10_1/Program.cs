@@ -17,13 +17,13 @@ namespace SigmaCamp_HomeTask10_1
                 translator.AddDictionary(dictionary);
                 TranslatorService.TranslateByLine("../../../Text.txt", translator);
             }
-            catch (FileNotFoundException)
+            catch (FileNotFoundException ex)
             {
-                Console.WriteLine("FileNotFoundException");
+                Console.WriteLine(ex.Message);
             }
-            catch (ArgumentException)
+            catch (ArgumentException ex)
             {
-                Console.WriteLine("ArgumentException");
+                Console.WriteLine(ex.Message);
             }
         }
         public static string InputTranslation(string word)
