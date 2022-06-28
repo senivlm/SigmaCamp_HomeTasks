@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace SigmaCamp_HomeTask10_1
 {
     class Program
-    {
+    {//тест з креативом!
         static void Main(string[] args)
         {
             Dictionary<string, string> dictionary;
