@@ -9,7 +9,6 @@ namespace SigmaCamp_HomeTask11
 {
     internal class Storage<T>:IEnumerable<T> where T : IPrinter, IPriceChanger
     {
-        int place = 0;
         private List<T> _allItems;
 
         #region Constructors
@@ -19,7 +18,7 @@ namespace SigmaCamp_HomeTask11
         }
         public Storage(int size)
         {           
-            _allItems = new List<T>(100);
+            _allItems = new List<T>(size);
         }
         public Storage(int size, params T[] products):this(size)
         {
@@ -33,7 +32,7 @@ namespace SigmaCamp_HomeTask11
             }
             _allItems.AddRange(products);
         }
-        public Storage(int size, string fileName):this(size)
+        public Storage(string fileName, int size = 100) :this(size)
         {
             FileOperations.ReadProductsFromFile(fileName, this);
         }
@@ -73,16 +72,18 @@ namespace SigmaCamp_HomeTask11
             }
             return meatProducts;
         }
-        public void PrintFullDescription()
+        public string PrintFullDescription()
         {
+            string result = string.Empty;
             foreach (T item in _allItems)
             {
-                Console.WriteLine(item.GetDescription());
+                result+=item.GetDescription() + "\n";
             }
+            return result;
         }
         public int GetCapacity()
         {
-            return _allItems.Count;
+            return _allItems.Capacity;
         }
         public IEnumerator<T> GetEnumerator()
         {

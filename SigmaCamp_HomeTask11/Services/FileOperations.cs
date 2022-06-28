@@ -50,6 +50,7 @@ namespace SigmaCamp_HomeTask11.Services
                                 if (storage is Storage<Product>)
                                 {
                                     (storage as Storage<Product>).AddItem(ProductService.ParseProduct(line));
+                                    place++;
                                 }
                             }
                             catch (ArgumentException ex)
