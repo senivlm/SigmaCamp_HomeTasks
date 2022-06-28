@@ -26,10 +26,12 @@ namespace SigmaCamp_HomeTask10_1
         public Translator(Dictionary<string, string> vocabulary, string text, string pathToDictionary)
         {
             _pathToDictionary = pathToDictionary;
+            //проблема неглибоких копій
             _vocabulary = vocabulary;
         }
         public void AddDictionary(Dictionary<string, string> dictionary)
         {
+             //проблема неглибоких копій
             _vocabulary = dictionary;
         }
 
