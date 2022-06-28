@@ -11,6 +11,7 @@ namespace SigmaCamp_HomeTask9
             Console.OutputEncoding = System.Text.Encoding.GetEncoding(65001);
             try
             {
+                //RestaurantService забагато на себе взяв. Не відповідає принципу Solid. 
                 Menu myMenu = RestaurantService.GetMenuFromFile("Menu.txt");
                 PriceList myPriceList = RestaurantService.GetPriceListFromFile("Prices.txt");
                 RestaurantService.GetCurRatesFromFile("Course.txt");
