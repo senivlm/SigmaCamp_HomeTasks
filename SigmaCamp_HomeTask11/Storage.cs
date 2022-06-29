@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace SigmaCamp_HomeTask11
 {
-    internal class Storage<T>:IEnumerable<T> where T : IPrinter, IPriceChanger
+    internal class Storage<T>:IEnumerable<T> where T : IPrinter, IPriceChanger, IStorageItem
     {
         private List<T> _allItems;
 

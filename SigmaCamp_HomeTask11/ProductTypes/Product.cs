@@ -4,7 +4,7 @@ using System.Linq;
 using SigmaCamp_HomeTask11.CustomInterfaces;
 namespace SigmaCamp_HomeTask11
 {
-    internal class Product:IPrinter, IPriceChanger
+    internal class Product:IPrinter, IPriceChanger, IStorageItem
     {
         private decimal _price;
         private double _weight;
@@ -19,7 +19,7 @@ namespace SigmaCamp_HomeTask11
         public string Name
         {
             get { return _name; }
-            protected set
+            set
             {
                 if (value == null )
                 {

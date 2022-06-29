@@ -32,7 +32,7 @@ namespace SigmaCamp_HomeTask11.Services
             }
             return true;
         }
-        public static void ReadProductsFromFile<T>(string fileName, Storage<T> storage) where T : IPrinter, IPriceChanger
+        public static void ReadProductsFromFile<T>(string fileName, Storage<T> storage) where T : IPrinter, IPriceChanger, IStorageItem
         {
             string inputFilePath;
             if (CheckFileExistence(fileName, out inputFilePath))
