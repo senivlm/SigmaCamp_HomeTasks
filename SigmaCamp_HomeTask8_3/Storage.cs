@@ -200,7 +200,10 @@ namespace SigmaCamp_HomeTask8_3
         {
             foreach (Product item in _allProducts)
             {
-                Console.WriteLine(item.GetDescription());
+                if (item != null)
+                {
+                    Console.WriteLine(item.GetDescription());
+                }
             }
         }
         public int GetCapacity()
@@ -240,14 +243,40 @@ namespace SigmaCamp_HomeTask8_3
             }
             return uniqueProducts;
         }
-        //public List<Product> GetCommonProducts(Storage anotherStrorage)
-        //{
-
-        //}
-        //public IEnumerable<Product> GetDistinctUniqueProducts(Storage anotherStrorage)
-        //{
-
-        //}
+        public List<Product> GetCommonProducts(Storage anotherStorage)
+        {
+            List<int> indexesToSearch = new List<int>();
+            List<Product> commonProducts = new List<Product>();
+            for (int i = 0; i < anotherStorage.GetCapacity(); i++)
+            {
+                if (anotherStorage[i] != null)
+                {
+                    indexesToSearch.Add(i);
+                }
+            }
+            foreach (Product product in _allProducts)
+            {
+                if (product != null)
+                {
+                    int previousLength = indexesToSearch.Count;
+                    foreach (int availableIndex in indexesToSearch)
+                    {
+                        Product anotherProduct = anotherStorage[availableIndex];
+                        if (product.Equals(anotherProduct))
+                        {
+                            commonProducts.Add(anotherProduct);
+                            indexesToSearch.Remove(availableIndex);
+                            break;
+                        }
+                    }
+                }
+            }
+            return commonProducts;
+        }
+        public List<Product> GetCommonUniqueProducts(Storage anotherStrorage)
+        {
+            return (_allProducts.Intersect(anotherStrorage._allProducts)).Where(x => x != null).ToList();   
+        }
         public IEnumerator<Product> GetEnumerator()
         {
             return ((IEnumerable<Product>)_allProducts).GetEnumerator();

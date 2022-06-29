@@ -8,29 +8,41 @@ namespace SigmaCamp_HomeTask8_3
         {
             try
             {
-                Storage mySrorage1 = new Storage(100, "MyProducts1.txt");
-                Storage mySrorage2 = new Storage(100, "MyProducts2.txt");
-                foreach (Product item in mySrorage1.GetUniqueProducts(mySrorage2))
+                Storage myStorage1 = new Storage(100, "MyProducts1.txt");
+                Storage myStorage2 = new Storage(100, "MyProducts2.txt");
+                Console.WriteLine("All products in myStorage1:");
+                myStorage1.PrintFullDescription();
+
+                Console.WriteLine("\nAll products in myStorage2:");
+                myStorage2.PrintFullDescription();
+                Console.WriteLine();
+
+                ConsoleColor currentColor = Console.ForegroundColor;
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Unique products in myStorage1:");
+                Console.ForegroundColor = currentColor;
+                foreach (Product item in myStorage1.GetUniqueProducts(myStorage2))
                 {
-                    Console.WriteLine(item.GetDescription());
+                    Console.WriteLine("\t" + item.GetDescription());
                 }
-                
-                //Product product1 = new Product("Картопля", 7.4m, 1);
-                //Product product2 = new Product("Шампунь", 72m, 0.2);
-                //Product product3 = new Product("Батон", 20.75m, 0.5);
-                //Product product4 = new Meat(120m, 1, "Extra class 1", "veal");
-                //Product product5 = new DairyProducts("Молоко", 30m, 0.9, 10);
+                Console.WriteLine();
 
-                //Console.WriteLine(product4);
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Common products in myStorage1 and myStorage2:");
+                Console.ForegroundColor = currentColor;
+                foreach (Product item in myStorage1.GetCommonProducts(myStorage2))
+                {
+                    Console.WriteLine("\t" + item.GetDescription());
+                }
+                Console.WriteLine();
 
-                //Buy myProducts = new Buy();
-                //myProducts.AddProduct(product1);
-                //myProducts.AddProduct(product2, 8);
-                //myProducts.AddProduct(product4, 3);
-                //myProducts.AddProduct(product5, 5);
-
-                //Check myCheck = new Check();
-                //myCheck.PrintCheck(myProducts);
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Unique common products in myStorage1 and myStorage2:");
+                Console.ForegroundColor = currentColor;
+                foreach (Product item in myStorage1.GetCommonUniqueProducts(myStorage2))
+                {
+                    Console.WriteLine("\t" + item.GetDescription());
+                }
             }
             catch (ArgumentOutOfRangeException ex)
             {
