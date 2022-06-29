@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SigmaCamp_HomeTask11
 {
-    static internal class ProductService
+    static internal class StorageService
     {
         public static void InputProductManully(Storage<Product> storage)
         {
