@@ -2,18 +2,6 @@
 using System.Globalization;
 namespace SigmaCamp_HomeTask11
 {
-    public enum MeatCategory
-    {
-        ExtraClass1,
-        ExtraClass2
-    }
-    public enum MeatKind
-    {
-        Mutton,
-        Veal,
-        Pork,
-        Chicken
-    }
     internal class Meat:Product
     {
         const double rateCategory1 = 0.1;
