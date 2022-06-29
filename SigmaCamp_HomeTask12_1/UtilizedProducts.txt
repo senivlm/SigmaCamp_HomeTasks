@@ -1,0 +1,1 @@
+Name: Молоко, Price: 30, Weight: 0.9, Shelf Life: 31
