@@ -33,7 +33,7 @@ namespace SigmaCamp_HomeTask12_1.Services
             }
             return true;
         }
-        public static void ReadProductsFromFile<T>(string fileName, Storage<T> storage) where T : IPrinter, IPriceChanger
+        public static void ReadProductsFromFile<T>(string fileName, Storage<T> storage) where T : IPrinter, IPriceChanger, IStorageItem
         {
             string inputFilePath;
             if (CheckFileExistence(fileName, out inputFilePath))
@@ -53,7 +53,7 @@ namespace SigmaCamp_HomeTask12_1.Services
                             {
                                 if (storage is Storage<Product>)
                                 {
-                                    if(!(storage as Storage<Product>).TryAddItem(ProductService.ParseProduct(line)))
+                                    if(!(storage as Storage<Product>).TryAddItem(StorageService.ParseProduct(line)))
                                     {
                                         linesForUtil.Add(line);
                                     }
@@ -71,7 +71,10 @@ namespace SigmaCamp_HomeTask12_1.Services
                         }
                     }
                 }
-                RemoveUtilizedLines(linesForUtil);
+                if (linesForUtil.Count > 0)
+                {
+                    RemoveUtilizedLines(linesForUtil);
+                }
             }
             else
             {

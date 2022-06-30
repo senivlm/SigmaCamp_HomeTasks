@@ -3,11 +3,13 @@ using SigmaCamp_HomeTask12_1.Services;
 using System.Linq;
 using System.Collections;
 using SigmaCamp_HomeTask12_1.CustomInterfaces;
+using System.Diagnostics;
 using System.Collections.Generic;
+using SigmaCamp_HomeTask12_1.Services;
 
 namespace SigmaCamp_HomeTask12_1
 {
-    internal class Storage<T>:IEnumerable<T> where T : IPrinter, IPriceChanger
+    internal class Storage<T>:IEnumerable<T> where T : IPrinter, IPriceChanger, IStorageItem
     {
         private List<T> _allItems;
         public event StorageHandler OverDated;
@@ -66,7 +68,26 @@ namespace SigmaCamp_HomeTask12_1
             _allItems.Add(item);
             return true;
         }
-
+        public List<T> SearchByName(string name)
+        {
+            CustomSearchService<T>.GetItemsByName(this, name);  
+            return LINQsearchService<T>.GetItemsByNameLINQ(this, name);
+        }
+        public List<T> SearchByWeight(double weight, SearchNumberFilter filter = SearchNumberFilter.Equal)
+        {
+            CustomSearchService<T>.GetItemsByNumeric<double>(this, "weight", weight, filter);
+            return LINQsearchService<T>.GetItemsByNumericLINQ<double>(this, "weight", weight, filter);
+        }
+        public List<T> SearchByPrice(decimal price, SearchNumberFilter filter = SearchNumberFilter.Equal)
+        {
+            CustomSearchService<T>.GetItemsByNumeric<decimal>(this, "price", price, filter);
+            return LINQsearchService<T>.GetItemsByNumericLINQ<decimal>(this, "price", price, filter);
+        }
+        public List<T> SearchByShelfLife(int shelfLife, SearchNumberFilter filter = SearchNumberFilter.Equal)
+        {
+            CustomSearchService<T>.GetItemsByNumeric<int>(this, "shelfLife", shelfLife, filter);
+            return LINQsearchService<T>.GetItemsByNumericLINQ<int>(this, "shelfLife", shelfLife, filter);
+        }
         public void ChangeAllProductsPrice(int percentToChange)
         {
             foreach (T product in _allItems)
