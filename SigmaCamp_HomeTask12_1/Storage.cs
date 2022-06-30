@@ -95,17 +95,13 @@ namespace SigmaCamp_HomeTask12_1
                 product.ChangePrice(percentToChange);
             }
         }
-        public List<Meat> GetMeatProducts()
+        public List<T> GetItems(string className = "")
         {
-            List<Meat> meatProducts = new List<Meat>();
-            foreach (T product in _allItems)
+            if (className == "")
             {
-                if (product is Meat meatProduct)
-                {
-                    meatProducts.Add(meatProduct);
-                }
+                className = typeof(T).Name;
             }
-            return meatProducts;
+            return _allItems.Where(item => item.GetType().Name == className).ToList();
         }
         public string PrintFullDescription()
         {

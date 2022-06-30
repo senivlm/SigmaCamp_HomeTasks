@@ -25,10 +25,6 @@ namespace SigmaCamp_HomeTask12_1
                 {
                     throw new ArgumentNullException("You can't assign null to name");
                 }
-                if (value.Any(char.IsDigit))
-                {
-                    throw new ArgumentException("Type of error: Name of argument contains digit \n\tTime:" + DateTime.Now.ToString("r", CultureInfo.GetCultureInfo("en-US")));
-                }
                 if (Char.IsLower(value[0]))
                 {
                     value = Char.ToUpper(value[0]) + value.Substring(1);

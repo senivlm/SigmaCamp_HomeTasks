@@ -32,10 +32,6 @@ namespace SigmaCamp_HomeTask11
             }
             _allItems.AddRange(products);
         }
-        public Storage(string fileName, int size = 100) :this(size)
-        {
-            FileOperations.ReadProductsFromFile(fileName, this);
-        }
         #endregion
         public T this[int index]
         {
@@ -60,17 +56,13 @@ namespace SigmaCamp_HomeTask11
                 product.ChangePrice(percentToChange);
             }
         }
-        public List<Meat> GetMeatProducts()
+        public List<T> GetItems(string className = "")
         {
-            List<Meat> meatProducts = new List<Meat>();
-            foreach (T product in _allItems)
+            if (className == "")
             {
-                if (product is Meat meatProduct)
-                {
-                    meatProducts.Add(meatProduct);
-                }
+                className = typeof(T).Name;
             }
-            return meatProducts;
+            return _allItems.Where(item => item.GetType().Name == className).ToList();
         }
         public string PrintFullDescription()
         {
