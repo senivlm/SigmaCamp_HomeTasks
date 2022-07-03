@@ -50,3 +50,7 @@ Error:
 	Line: Цукерки Milka Moments у молочному шоколаді, 85, 169,
 	Type of error: couldn't parse to product
 	Time:Thu, 30 Jun 2022 15:59:41 GMT
+Error:
+	Line: Цукерки Milka Moments у молочному шоколаді, 85, 169,
+	Type of error: couldn't parse to product
+	Time:Sun, 03 Jul 2022 13:02:25 GMT
