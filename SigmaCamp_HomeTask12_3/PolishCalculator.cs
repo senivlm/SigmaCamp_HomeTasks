@@ -51,18 +51,12 @@ namespace SigmaCamp_HomeTask12_3
                         Console.WriteLine($"{counter}) cos({last}) = {locals.Peek()}");
                         continue;
                     }
-                    //	Получаем значения из стека в обратном порядке
                     double second = locals.Count > 0 ? locals.Pop() : 0,
                     first = locals.Count > 0 ? locals.Pop() : 0;
-
-                    //	Получаем результат операции и заносим в стек
                     locals.Push(Execute(c, first, second));
-                    //	Отчитываемся пользователю о проделанной работе
                     Console.WriteLine($"{counter}) {first} {c} {second} = {locals.Peek()}");
                 }
             }
-
-            //	По завершению цикла возвращаем результат из стека
             return locals.Pop();
         }
     }
