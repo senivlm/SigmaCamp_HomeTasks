@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace SigmaCamp_HomeTask12_3
 {
     internal class PolishCalculator
-    {
+    {// Зараз класи створені таким чином, що вони не відкриті до змін. А це означає, що не виконуються принципи Solid.
         static private double Execute(char op, double first, double second = 0) => op switch
         {
             '+' => first + second, 
