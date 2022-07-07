@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using SigmaCamp_HomeTask12_1.Services;
 
 namespace SigmaCamp_HomeTask12_1
-{
+{// "Є запитання до інтерфейсів
     internal class Storage<T>:IEnumerable<T> where T : IPrinter, IPriceChanger, IStorageItem
     {
         private List<T> _allItems;
