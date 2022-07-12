@@ -7,7 +7,7 @@ using System.Collections.Generic;
 namespace SigmaCamp_HomeTask13
 {
     internal class Program
-    {
+    {//добре спроектовано. Молодець! І калькулятор теж)
         static void Main(string[] args)
         {
             try
