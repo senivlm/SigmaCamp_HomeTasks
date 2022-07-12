@@ -6,7 +6,7 @@ using System.Linq;
 namespace SigmaCamp_HomeTask13.Services
 {
     internal class CheckoutsCoordinator
-    {
+    {// Клас треба б розвантажити.
         private int _enterPersonTime;
         private CheckoutsController _checkoutsController;
 
@@ -40,6 +40,7 @@ namespace SigmaCamp_HomeTask13.Services
                 _checkoutsEfficiency.Add(checkout, 0);
             }
         }
+        //Чи тут має бути цей метод?
         private void OnOvercrowdedFirstTime(CheckoutCoordEventArgs args)
         {
             overcrowdedEventNumber++;
