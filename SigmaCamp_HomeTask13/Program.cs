@@ -32,6 +32,10 @@ namespace SigmaCamp_HomeTask13
                 coordinator.OvercrowdedManyTimes += Handlers.OvercrowdManyHandler;
                 coordinator.CoordinatePersons("../../../Persons.txt");
             }
+            catch (WrongStatusException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
             catch (ArgumentNullException ex)
             {
                 Console.WriteLine(ex);
