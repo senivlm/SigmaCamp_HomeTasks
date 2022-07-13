@@ -7,89 +7,90 @@ namespace SigmaCamp_HomeTask12_3
     {
         public string InputExpr { get; private set; }
         public string PostfixExpr { get; private set; }
-        private Dictionary<char, int> _operationPriorityDict;
-        public PolishInvertor(string inputExpr)
+        private Dictionary<string, Function> _functions;
+        public PolishInvertor()
+        {
+            _functions = new Dictionary<string, Function>()
+            {
+                {"(", new Function("(", 0, 0, null) }
+            };
+        }
+        public PolishInvertor(string inputExpr):this()
         {
             InputExpr = inputExpr;
-            _operationPriorityDict = new Dictionary<char, int>()
+        }
+        public PolishInvertor(string inputExpr, List<Function> functions) : this(inputExpr)
+        {
+            foreach (Function function in functions)
             {
-                {'(',0 },
-                {'+',1 },
-                {'-',1 },
-                {'*',2 },
-                {'/',2 },
-                {'^',3 },
-                {'s',3 },
-                { 'c',3}
-            };
-            PostfixExpr = GetPostfixExpr(inputExpr);
+                _functions.Add(function.Sign, function);
+            }
         }
-        public Dictionary<char, int> GetOperatorPriorityDict()
+        public void AddFunction(Function function)
         {
-            return _operationPriorityDict;
+            _functions.Add(function.Sign, function);
         }
-        public string ReadNumber(string expr, ref int pointer)
+        public Dictionary<string, Function> GetOperatorPriorityDict()
         {
-            string num = string.Empty;
+            return _functions;
+        }
+        public string ReadLexeme(string expr, LexemeType type, ref int pointer)
+        {
+            string lexeme = string.Empty;
             for (; pointer < expr.Length; pointer++)
             {
                 char c = expr[pointer];
-                if (char.IsDigit(c) || c == '.')
-                    num += c;
+                if (char.IsDigit(c) && type == LexemeType.Number || c == '.' || c == ',')
+                    lexeme += c;
+                else if(!char.IsDigit(c) && c != '(' && c!=')' && type == LexemeType.Function)
+                {
+                    lexeme += c;
+                    lexeme = lexeme.Replace(" ", "");
+                    if (_functions.ContainsKey(lexeme)) break;
+                }
                 else
                 {
                     pointer--;
                     break;
                 }
             }
-            return num;
+            return lexeme;
         }
-        public string GetPostfixExpr(string expr)
+
+        public string GetPostfixExpr()
         {
             string postfixExpr = string.Empty;
-            Stack<char> operators = new Stack<char>();
-            for (int i = 0; i < expr.Length; i++)
+            Stack<string> operators = new Stack<string>();
+            for (int i = 0; i < InputExpr.Length; i++)
             {
-                char c = expr[i];
+                char c = InputExpr[i];
                 if (char.IsDigit(c))
                 {
-                    postfixExpr += ReadNumber(expr, ref i) + " ";
+                    postfixExpr += ReadLexeme(InputExpr, LexemeType.Number, ref i) + " ";
                 }
                 else if (c == '(')
                 {
-                    operators.Push(c);
+                    operators.Push(char.ConvertFromUtf32(c));
                 }
                 else if (c == ')')
                 {
-                    while (operators.Count > 0 && operators.Peek() != '(')
+                    while (operators.Count > 0 && operators.Peek() != "(")
                         postfixExpr += operators.Pop();
                     operators.Pop();
-                    if (operators.Peek() == 's')
-                    {
-                        postfixExpr += "sin";
-                        operators.Pop();
-                    }
-                    if (operators.Peek() == 'c')
-                    {
-                        postfixExpr += "cos";
-                        operators.Pop();
-                    }
                 }
-                else if (_operationPriorityDict.ContainsKey(c))
+                else
                 {
-                    char op = c;
-                    if ((c == 'c' && expr[++i] == 'o' && expr[++i] == 's') || (c == 's' && expr[++i] == 'i' && expr[++i] == 'n'))
+                    string function = ReadLexeme(InputExpr, LexemeType.Function, ref i);
+                    if (_functions.ContainsKey(function))
                     {
-                        operators.Push(op);
-                        continue;
+                        while (operators.Count > 0 && (_functions[operators.Peek()].Priority >= _functions[function].Priority))
+                            postfixExpr += operators.Pop();
+                        operators.Push(function);
                     }
-                    while (operators.Count > 0 && (_operationPriorityDict[operators.Peek()] >= _operationPriorityDict[op]))
-                        postfixExpr += operators.Pop();
-                    operators.Push(op);
                 }
             }
-            foreach (char op in operators)
-                postfixExpr += op;
+            foreach (string function in operators)
+                postfixExpr += function;
             return postfixExpr;
         }
     }
