@@ -12,22 +12,19 @@ namespace SigmaCamp_HomeTask14.SerializationService
 {
     internal class CustomJSONSerializer: CustomSerializer
     {
-        public CustomJSONSerializer(string filePath):base(filePath)
+        private JsonSerializerOptions _options = new()
         {
-
-        }
+            Encoder = System.Text.Encodings.Web.JavaScriptEncoder.Create(UnicodeRanges.All),
+            PropertyNameCaseInsensitive = true,
+            PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+            IncludeFields = true,
+            WriteIndented = true,
+            NumberHandling = JsonNumberHandling.AllowReadingFromString | JsonNumberHandling.
+                WriteAsString
+        };
+        public CustomJSONSerializer(string filePath) : base(filePath) { }
         public override List<IProduct> Deserialize()
         {
-            var options = new JsonSerializerOptions()
-            {
-                Encoder = System.Text.Encodings.Web.JavaScriptEncoder.Create(UnicodeRanges.All),
-                PropertyNameCaseInsensitive = true,
-                PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-                IncludeFields = true,
-                WriteIndented = true,
-                NumberHandling = JsonNumberHandling.AllowReadingFromString | JsonNumberHandling.
-                WriteAsString
-            };
             List<IProduct> products = new List<IProduct>();
             using (StreamReader sr = new(FilePath))
             {
@@ -53,7 +50,7 @@ namespace SigmaCamp_HomeTask14.SerializationService
                                 if (method.IsGenericMethod && parameters[0].ParameterType == typeof(string))
                                 {
                                     MethodInfo constucted = method.MakeGenericMethod(pType);
-                                    object[] args = { jsonDoc.RootElement.ToString(), options };
+                                    object[] args = { jsonDoc.RootElement.ToString(), _options };
                                     products.Add((IProduct)constucted.Invoke(null, args));
                                 }
                             }
@@ -66,24 +63,14 @@ namespace SigmaCamp_HomeTask14.SerializationService
 
         public override void Serialize(List<IProduct> products)
         {
-            var options = new JsonSerializerOptions()
-            {
-                Encoder = System.Text.Encodings.Web.JavaScriptEncoder.Create(UnicodeRanges.All),
-                PropertyNameCaseInsensitive = true,
-                PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-                IncludeFields = true,
-                WriteIndented = true,
-                NumberHandling = JsonNumberHandling.AllowReadingFromString | JsonNumberHandling.
-                WriteAsString
-            };
             using (StreamWriter sw = new(FilePath))
             {
                 for (int i = 0; i < products.Count-1; i++)
                 {
-                    sw.Write(JsonSerializer.Serialize(products[i], products[i].GetType(), options));
+                    sw.Write(JsonSerializer.Serialize(products[i], products[i].GetType(), _options));
                     sw.WriteLine(",");
                 }
-                sw.Write(JsonSerializer.Serialize(products[products.Count - 1], products[products.Count - 1].GetType(), options));
+                sw.Write(JsonSerializer.Serialize(products[products.Count - 1], products[products.Count - 1].GetType(), _options));
             }
         }
     }

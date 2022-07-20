@@ -18,8 +18,9 @@ namespace SigmaCamp_HomeTask14
                 Storage<IProduct> myStorage = Storage<IProduct>.Instance;
                 myStorage.OverDated += Handlers.AddItemHandler;
                 SerializerCreator creator1 = new TextSerializerCreator();
-                CustomSerializer textSerializer = creator1.CreateSerializer("../../../MyProducts1.txt");
+                CustomSerializer textSerializer = creator1.CreateSerializer("../../../TextProducts.txt");
                 myStorage.AddProducts(textSerializer.Deserialize());
+
                 SerializerCreator creator2 = new JSONSerializerCreator();
                 CustomSerializer jsonSerializer = creator2.CreateSerializer("../../../JSONproducts.txt");
                 jsonSerializer.Serialize(myStorage.GetAllItems());
