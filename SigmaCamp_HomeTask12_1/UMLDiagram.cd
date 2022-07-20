@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="SigmaCamp_HomeTask12_1.DairyProducts" Collapsed="true">
+    <Position X="1" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAABAEoAAgAAAAEAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>ProductTypes\DairyProducts.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SigmaCamp_HomeTask12_1.Meat" Collapsed="true">
+    <Position X="3.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAFABBAEoAAAAAAAAABAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>ProductTypes\Meat.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SigmaCamp_HomeTask12_1.Product" Collapsed="true">
+    <Position X="2.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgABIAAAAQAAABAEoAAAAAQAACAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>ProductTypes\Product.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SigmaCamp_HomeTask12_1.ProductParsing" Collapsed="true">
+    <Position X="5.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAgAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\ProductParsing.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SigmaCamp_HomeTask12_1.StorageService" Collapsed="true">
+    <Position X="5.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAABAAAAAAAAAA=</HashCode>
+      <FileName>Services\StorageService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SigmaCamp_HomeTask12_1.Buy">
+    <Position X="5" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAIQAAAAAAAAAAAAAABAABAAAA=</HashCode>
+      <FileName>Buy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SigmaCamp_HomeTask12_1.Check">
+    <Position X="7.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Check.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SigmaCamp_HomeTask12_1.Handlers" Collapsed="true">
+    <Position X="7.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Handlers.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SigmaCamp_HomeTask12_1.Program" Collapsed="true">
+    <Position X="7.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SigmaCamp_HomeTask12_1.Storage&lt;T&gt;" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABQAACAACAAhAJAACEAABAAAAQAAAgAUAAAAAEAAAAA=</HashCode>
+      <FileName>Storage.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SigmaCamp_HomeTask12_1.StorageEventArgs" Collapsed="true">
+    <Position X="11" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>StorageHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SigmaCamp_HomeTask12_1.Services.CustomCompareService&lt;T&gt;" Collapsed="true">
+    <Position X="9.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAEAAAAAAAQA=</HashCode>
+      <FileName>SearchServices\CustomCompareService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SigmaCamp_HomeTask12_1.Services.CustomSearchService&lt;T&gt;" Collapsed="true">
+    <Position X="11" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SearchServices\CustomSearchService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SigmaCamp_HomeTask12_1.Services.LINQsearchService&lt;T&gt;" Collapsed="true">
+    <Position X="11" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAg=</HashCode>
+      <FileName>SearchServices\LINQsearchService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SigmaCamp_HomeTask12_1.Services.FileOperations" Collapsed="true">
+    <Position X="5.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAAAgAAAAABAAgAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Services\FileOperations.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SigmaCamp_HomeTask12_1.SearchServices.LINQcompareService&lt;T&gt;" Collapsed="true">
+    <Position X="9.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAEAAAAAAAQA=</HashCode>
+      <FileName>SearchServices\LINQcompareService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="SigmaCamp_HomeTask12_1.CustomInterfaces.IPriceChanger" Collapsed="true">
+    <Position X="5.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CustomInterfaces\IPriceChanger.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SigmaCamp_HomeTask12_1.CustomInterfaces.IPrinter" Collapsed="true">
+    <Position X="7.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CustomInterfaces\IPrinter.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SigmaCamp_HomeTask12_1.CustomInterfaces.IStorageItem" Collapsed="true">
+    <Position X="9.25" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAAAAAAAQAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CustomInterfaces\IStorageItem.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="MeatCategory" Collapsed="true">
+    <Position X="5.75" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>Enums\MeatCategory.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="MeatKind" Collapsed="true">
+    <Position X="7.5" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAAAAAIAAAAAAAAAAAEAAAAAAAAAgAA=</HashCode>
+      <FileName>Enums\MeatKind.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SearchNumberFilter" Collapsed="true">
+    <Position X="9.25" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAgAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Enums\SearchNumberFilter.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Delegate Name="SigmaCamp_HomeTask12_1.StorageHandler" Collapsed="true">
+    <Position X="5.75" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>StorageHandler.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

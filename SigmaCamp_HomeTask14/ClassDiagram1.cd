@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Interface Name="SigmaCamp_HomeTask14.ProductInterfaces.IProduct" Collapsed="true">
+    <Position X="4.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAQAAABAAAAAAAAQAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ProductInterfaces\IProduct.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SigmaCamp_HomeTask14.ProductInterfaces.IDairyProduct" Collapsed="true">
+    <Position X="1.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ProductInterfaces\IDairyProduct.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SigmaCamp_HomeTask14.ProductInterfaces.IMeatProduct" Collapsed="true">
+    <Position X="4.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>ProductInterfaces\IMeatProduct.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SigmaCamp_HomeTask14.ProductInterfaces.IElectricalDevice" Collapsed="true">
+    <Position X="6.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ProductInterfaces\IElectricalDevice.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SigmaCamp_HomeTask14.ProductInterfaces.ICrop" Collapsed="true">
+    <Position X="8" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ProductInterfaces\ICrop.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SigmaCamp_HomeTask14.ProductInterfaces.IPlant" Collapsed="true">
+    <Position X="8" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ProductInterfaces\IPlant.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

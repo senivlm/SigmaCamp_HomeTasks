@@ -1,5 +1,6 @@
 ﻿using System;
 using SigmaCamp_HomeTask12_1.Services;
+using SigmaCamp_HomeTask12_1.CustomInterfaces;
 namespace SigmaCamp_HomeTask12_1
 {
     internal class Program
