@@ -10,7 +10,7 @@ namespace SigmaCamp_HomeTask14
     internal class Program
     {
         static void Main(string[] args)
-        {
+        {//це тільки частина завдання.
             try
             {
                 Console.OutputEncoding = System.Text.Encoding.GetEncoding(65001);
